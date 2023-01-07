@@ -1,0 +1,22 @@
+<mddoc>
+	<docpage target="README.md" autoloader="psr0" autoloader-root="src">
+		<section title="PHP CLI-Toolkit">
+			<badge-poser type="version"/>
+			<badge-poser type="downloads"/>
+			<text>A Simple PHP CLI Toolkit</text>
+			<section title="Requirements">
+				<composer-requires/>
+			</section>
+			<section title="Installing">
+				<composer-install/>
+			</section>
+			<section title="Documentation">
+				<docpage target="DOCS.md" autoloader="psr4" autoloader-root="src" autoloader-root-namespace="CLI">
+					<section title="Documentation">
+						<recursivedirectory name="src"/>
+					</section>
+				</docpage>
+			</section>
+		</section>
+	</docpage>
+</mddoc>
