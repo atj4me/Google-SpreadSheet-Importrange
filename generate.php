@@ -57,6 +57,18 @@ if(!is_numeric($count)){
 	exit();
 }
 
+Misc::bell(1);
+Output::line(Style::green("Do you need a client copy? [ type 'yes' to generate ]" ) .": ");
+Cursor::show();
+$client_copy = getOp();
+
+if(in_array(trim(strtolower($client_copy)), array_map('strtolower', ['y','yes']))){
+	$client_copy = 1;
+}
+else {
+	$client_copy = 0;
+}
+
 
 Misc::bell(1);
 Output::line(Style::purple("Generate? [ type 'yes' to generate ]") .": ");
@@ -76,6 +88,8 @@ Misc::bell(1);
 		. "  IMPORTRANGE(\"{$url}\", \"'{$sheet}'!A1:E{$count}\"),".PHP_EOL
 		. "  IMPORTRANGE(\"{$url}\", \"'{$sheet}'!G1:G{$count}\")".PHP_EOL
 		." }".PHP_EOL;
+
+	$clientTable = "=IMPORTRANGE(\"{$url}\", \"'{$sheet}'!A1:E{$count}\")".PHP_EOL;
 
 	$effortStart = (int)$count + 2;
 	$effortEnd = $effortStart+4;
@@ -116,8 +130,19 @@ Output::line(Style::normal(PHP_EOL
 	.PHP_EOL
 	. Style::normal($mainTable, 'reverse')
 	.PHP_EOL
-	.PHP_EOL, 'yellow'));
+	.PHP_EOL, 'cyan'));
 
+Output::line(Style::normal(PHP_EOL
+	."####################################"
+	.PHP_EOL
+	."Query for Main Table for Client Copy"
+	.PHP_EOL
+	."#####################################"
+	.PHP_EOL
+	.PHP_EOL
+	. Style::normal($clientTable, 'reverse')
+	.PHP_EOL
+	.PHP_EOL, 'blue'));
 
 Output::line(Style::normal(PHP_EOL
 	."######################"
@@ -155,7 +180,7 @@ Output::line(Style::normal(PHP_EOL
 	.PHP_EOL
 	. Style::normal($estimation, 'reverse')
 	.PHP_EOL
-	.PHP_EOL, 'cyan'));
+	.PHP_EOL, 'yellow'));
 
 Output::line(Style::normal(PHP_EOL
 	."########################"
