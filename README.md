@@ -1,4 +1,5 @@
-h1. IMPORTRANGE function generator tool
+
+# IMPORTRANGE function generator tool
 
 For some specific purpose, like when creating a proposal in Google Sheet, we always needed to use IMPORTTANGE to make a copy available to other users, while not revealing the internal calculations. 
 
